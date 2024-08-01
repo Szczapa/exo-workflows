@@ -1,0 +1,16 @@
+name: Projet push
+# Le workflow va se déclencher à chaque push de mon application
+on: push
+jobs:
+  mon_job:
+    name: Build & test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récup appli
+        uses: actions/checkout@v4
+      - name: dépendances
+        run: npm ci
+      - name: build
+        run: npm run build
+      - name: test
+        run: npm run test
