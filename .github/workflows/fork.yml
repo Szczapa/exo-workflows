@@ -1,11 +1,12 @@
-name: Worflow Fork
+name: Workflow Fork
 
 on:
   fork:
-    types: created
+    types: [created]
 
 jobs:
   exemple:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Fork créé"
+      - name: Afficher un message
+        run: echo "Fork créé"
