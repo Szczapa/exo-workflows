@@ -1,12 +1,19 @@
-name: Workflow Fork
+name: Fork Notification
 
 on:
   fork:
     types: [created]
 
 jobs:
-  exemple:
+  notify:
     runs-on: ubuntu-latest
+
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
       - name: Afficher un message
-        run: echo "Fork créé"
+        run: |
+          echo "Un nouveau fork a été créé pour le dépôt : $GITHUB_REPO par $GITHUB_SENDER"
+        env:
+          GITHUB_REPO: ${{ github.event.repository.full_name }}
+          GITHUB_SENDER: ${{ github.event.sender.login }}
