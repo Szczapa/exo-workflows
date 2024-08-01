@@ -10,7 +10,8 @@ jobs:
     permissions:
       issues: write
     steps:
-    - run: gh issue comment $ISSUE_URL -b "Bonjour, ${{ github.event.issue.user.login }}. Merci pour votre issue. Nous allons la traiter dans les plus brefs délais."
+    - run: gh issue comment $ISSUE_URL -b "$MESSAGE"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         ISSUE_URL: ${{ github.event.issue.html_url }}
+        MESSAGE: "Bonjour, ${{ github.event.issue.user.login }}. Merci pour votre issue. Nous allons la traiter dans les plus brefs délais."
