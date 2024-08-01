@@ -1,0 +1,16 @@
+name: Worflow Issue
+on:
+    issues:
+        types: opened
+
+jobs:
+  commentaire:
+    name: Commentaire
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+    - run: gh issue comment $ISSUE_URL -b "Bonjour, ${{ github.event.issue.user.login }}. Merci pour votre issue. Nous allons la traiter dans les plus brefs délais."
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ISSUE_URL: ${{ github.event.issue.html_url }}

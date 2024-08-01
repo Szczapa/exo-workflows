@@ -1,0 +1,11 @@
+name: Worflow Fork
+
+on:
+  fork:
+    types: created
+
+jobs:
+  exemple:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Fork créé"
