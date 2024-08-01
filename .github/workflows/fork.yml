@@ -1,8 +1,7 @@
 name: Fork Notification
 
 on:
-  fork:
-    types: [created]
+  fork
 
 jobs:
   notify:
