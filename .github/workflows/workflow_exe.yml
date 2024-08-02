@@ -67,12 +67,12 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Build Docker image
-        run: docker build -t $USERNAME/my_java_app .
+        run: docker build -t $USERNAME/exo-workflows .
 
       - name: Push Docker image
-        run: docker push $USERNAME/my_java_app
+        run: docker push $USERNAME/exo-workflows
 
       - name: Test Docker image
         run: |
-          docker pull $USERNAME/my_java_app
-          docker run --rm $USERNAME/my_java_app
+          docker pull $USERNAME/exo-workflows
+          docker run --rm $USERNAME/exo-workflows
