@@ -2,35 +2,35 @@ name: Projet push
 # Le workflow va se déclencher à chaque push de mon application
 on: push
 jobs:
-  mon_job:
+  job:
     name: Build & test
     runs-on: ubuntu-latest
     steps:
       - name: Récup appli
         uses: actions/checkout@v4
-      - name: Cache Maven dependencies
+      - name: Cache npm dependencies
         uses: actions/cache@v4
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-package-${{ hashFiles('**/package-lock.json') }}
-      - name: installation des dépendance
+      - name: Installation des dépendances
         run: npm ci
-      - name: build de l'application
+      - name: Build de l'application
         run: npm run build
-      - name: test
+      - name: Test
         run: npm run test
       - name: Upload du build
         uses: actions/upload-artifact@v4
         with:
-          name: mon_app
+          name: spring_app
           path: dist
   download:
     runs-on: ubuntu-latest
-    needs: upload
+    needs: job
     steps:
       - name: Récupérer l'artéfact
         uses: actions/download-artifact@v4
         with:
-          name: build-artifact
+          name: spring_app
       - name: Lister les fichiers
-        run: ls
+        run: ls dist
