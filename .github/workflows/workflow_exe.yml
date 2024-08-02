@@ -14,7 +14,7 @@ jobs:
           path: ~/.npm
           key: ${{ runner.os }}-node-package-${{ hashFiles('**/package-lock.json') }}
       - name: Installation des dépendances
-        run: npm ci
+        run: npm install
       - name: Build de l'application
         run: npm run build
       - name: Test
