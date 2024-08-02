@@ -2,7 +2,7 @@
 FROM openjdk:17-jdk
 
 
-COPY *.jar /app/myapp.jar
+COPY *.jar /app/exo-workflows.jar
 
 
 EXPOSE 8080

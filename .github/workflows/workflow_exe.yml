@@ -71,3 +71,8 @@ jobs:
 
       - name: Push Docker image
         run: docker push $USERNAME/my_java_app
+
+      - name: Test Docker image
+        run: |
+          docker pull $USERNAME/my_java_app
+          docker run --rm $USERNAME/my_java_app
