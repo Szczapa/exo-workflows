@@ -8,4 +8,4 @@ COPY *.jar /app/exo-workflows.jar
 EXPOSE 8080
 
 
-ENTRYPOINT ["java", "-jar", "/app/myapp.jar"]
+ENTRYPOINT ["java", "-jar", "/app/exo-workflows.jar"]
