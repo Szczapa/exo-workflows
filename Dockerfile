@@ -1,11 +1,11 @@
+# Utiliser l'image officielle OpenJDK comme image de base
 FROM openjdk:17-jdk
-LABEL maintainer="Adam"
 
-# Add the application's JAR file
-COPY target/myapp.jar /app/myapp.jar
+# Ajouter le fichier JAR de l'application
+COPY *.jar /app/myapp.jar
 
-# Expose the port the application runs on
+# Exposer le port sur lequel l'application s'exécute
 EXPOSE 8080
 
-# Run the application
+# Commande pour exécuter l'application
 ENTRYPOINT ["java", "-jar", "/app/myapp.jar"]

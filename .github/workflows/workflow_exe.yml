@@ -66,8 +66,11 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
 
+      - name: Copy artifact to Docker context
+        run: mkdir -p docker-context && cp target/*.jar docker-context/
+
       - name: Build Docker image
-        run: docker build -t $USERNAME/my_java_app .
+        run: docker build -t $USERNAME/my_java_app ./docker-context
 
       - name: Push Docker image
         run: docker push $USERNAME/my_java_app
